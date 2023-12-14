@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +21,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function() {
-    return view('about');
-});
+// HomeController
+Route::get('/about', [HomeController::class, 'about']);
+Route::get('/search', [HomeController::class, 'search']);
 
-Route::get('/item/{id}', function ($id) {
-    $message = "Item id is {$id}";
+// ItemController
+Route::get('/item/{id}', [ItemController::class, 'show']);
+Route::get('/item/edit/{id}', function (int $id) {
+    $message = "ID is {$id}";
     return $message;
-});
-
-Route::get('/search', function (Request $request) {
-    $data = [
-    'keyword' => $request->keyword,
-    ];
-    return view('search', $data);
 });
 
 Route::get('/dashboard', function () {
