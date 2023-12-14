@@ -17,6 +17,7 @@ use App\Http\Controllers\ItemController;
 |
 */
 
+
 // HomeController
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/search', [HomeController::class, 'search']);
