@@ -17,10 +17,6 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // HomeController
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/search', [HomeController::class, 'search']);
@@ -30,6 +26,10 @@ Route::get('/item/{id}', [ItemController::class, 'show']);
 Route::get('/item/edit/{id}', function (int $id) {
     $message = "ID is {$id}";
     return $message;
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
